@@ -9,6 +9,7 @@ A transparent overlay application that displays the last 15 keyboard combination
 - Modifier keys (Ctrl, Alt, Shift, Win) are only shown when combined with other keys
 - Shift+letter combinations show the letter in uppercase, single letters in lowercase
 - Special keys (Enter, Tab, Backspace, etc.) are displayed by their name
+- Some padding is added after 1.5 seconds to separate fast key sequences
 
 ## Requirements
 
