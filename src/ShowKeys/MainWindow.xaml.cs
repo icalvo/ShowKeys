@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
 
-namespace KeyboardJedi;
+namespace ShowKeys;
 
 public partial class MainWindow
 {
@@ -25,6 +25,9 @@ public partial class MainWindow
         _instance = this;
         _keyHistory = new ObservableCollection<KeyEntryItem>();
         KeyHistoryList.ItemsSource = _keyHistory;
+
+        // Prevent the window from getting focus when started
+        ShowActivated = false;
 
         PositionWindow();
         _hookId = SetHook(_proc);

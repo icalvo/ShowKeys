@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace KeyboardJedi
+namespace ShowKeys
 {
     public class KeyEntryTemplateSelector : DataTemplateSelector
     {

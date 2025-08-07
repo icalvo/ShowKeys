@@ -1,4 +1,4 @@
-﻿namespace KeyboardJedi
+﻿namespace ShowKeys
 {
     // Represents a keyboard combination (e.g. Ctrl+C)
     public class KeyCombinationEntry : KeyEntryItem
