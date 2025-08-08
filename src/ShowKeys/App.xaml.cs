@@ -9,7 +9,8 @@ namespace ShowKeys;
 /// </summary>
 public partial class App
 {
-    private static readonly Mutex Mutex = new Mutex(false, "KeyboardJediShowKeysInstance");
+    private static readonly Mutex Mutex = new Mutex(false, "ShowKeysInstance");
+    private bool _mutexAcquired;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -17,18 +18,22 @@ public partial class App
         if (!Mutex.WaitOne(TimeSpan.Zero, false))
         {
             // Another instance is already running
-            MessageBox.Show("ShowKeys is already running.", "ShowKeys", MessageBoxButton.OK, MessageBoxImage.Information);
             Shutdown();
             return;
         }
 
+        _mutexAcquired = true;
         base.OnStartup(e);
     }
 
     protected override void OnExit(ExitEventArgs e)
     {
-        // Release the mutex when the application exits
-        Mutex.ReleaseMutex();
+        // Only release the mutex if we actually acquired it
+        if (_mutexAcquired)
+        {
+            Mutex.ReleaseMutex();
+        }
+        
         base.OnExit(e);
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:showKeys="clr-namespace:ShowKeys"
         mc:Ignorable="d"
-        Title="Keyboard Jedi" 
+        Title="ShowKeys" 
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -16,7 +16,7 @@
     <Window.Resources>
         <showKeys:KeyEntryTemplateSelector x:Key="KeyEntryTemplateSelector">
             <showKeys:KeyEntryTemplateSelector.StandardTemplate>
-                <DataTemplate DataType="local:KeyCombinationEntry">
+                <DataTemplate DataType="{x:Type showKeys:KeyCombinationEntry}">
                     <Border Background="#AA663333" 
                             CornerRadius="3" 
                             Margin="2,0" 
@@ -29,7 +29,7 @@
                 </DataTemplate>
             </showKeys:KeyEntryTemplateSelector.StandardTemplate>
             <showKeys:KeyEntryTemplateSelector.SpaceTemplate>
-                <DataTemplate DataType="local:TimePaddingEntry">
+                <DataTemplate DataType="{x:Type showKeys:TimePaddingEntry}">
                     <Border Background="#00000000" 
                             CornerRadius="3" 
                             Margin="2,0" 
@@ -42,20 +42,6 @@
                     </Border>
                 </DataTemplate>
             </showKeys:KeyEntryTemplateSelector.SpaceTemplate>
-            <showKeys:KeyEntryTemplateSelector.ErrorTemplate>
-                <DataTemplate DataType="local:ErrorEntry">
-                    <Border Background="#AAFF0000" 
-                            CornerRadius="3" 
-                            Margin="2,0" 
-                            Padding="5,2">
-                        <TextBlock Text="❌" 
-                                   Foreground="White" 
-                                   FontFamily="Segoe UI Symbol" 
-                                   FontWeight="Bold"
-                                   FontSize="36"/>
-                    </Border>
-                </DataTemplate>
-            </showKeys:KeyEntryTemplateSelector.ErrorTemplate>
         </showKeys:KeyEntryTemplateSelector>
     </Window.Resources>
     <Border Background="#80000000" CornerRadius="5" Margin="5">

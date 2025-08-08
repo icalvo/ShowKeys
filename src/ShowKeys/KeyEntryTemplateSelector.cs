@@ -7,9 +7,8 @@ namespace ShowKeys
     {
         public DataTemplate? StandardTemplate { get; set; }
         public DataTemplate? SpaceTemplate { get; set; }
-        public DataTemplate? ErrorTemplate { get; set; }
 
-        public override DataTemplate? SelectTemplate(object item, DependencyObject container)
+        public override DataTemplate? SelectTemplate(object? item, DependencyObject container)
         {
             if (item is KeyEntryItem keyEntry)
             {
@@ -17,7 +16,6 @@ namespace ShowKeys
                 {
                     TimePaddingEntry => SpaceTemplate,
                     KeyCombinationEntry => StandardTemplate,
-                    ErrorEntry => ErrorTemplate,
                     _ => base.SelectTemplate(item, container)
                 };
             }

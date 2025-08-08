@@ -8,6 +8,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>ShowKeys</AssemblyName>
     <RootNamespace>ShowKeys</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\ShowKeysIcon.ico" />
+  </ItemGroup>
 
 </Project>
