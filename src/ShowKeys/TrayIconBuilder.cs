@@ -50,9 +50,11 @@ public static class TrayIconBuilder
 
     private static void OpenSettingsWindow()
     {
-        var settingsWindow = new SettingsWindow(AppSettings.MaxKeyHistoryEntries);
+        var settingsWindow = new SettingsWindow(AppSettings.MaxKeyHistoryEntries, AppSettings.FontSize);
         if (settingsWindow.ShowDialog() != true) return;
+
         AppSettings.MaxKeyHistoryEntries = settingsWindow.MaxEntries;
+        AppSettings.FontSize = settingsWindow.FontSize;
         AppSettings.Save();
     }
 }

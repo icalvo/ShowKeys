@@ -23,13 +23,24 @@
                    FontWeight="Bold" 
                    Margin="0,0,0,15"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Maximum number of key entries: " 
-                       VerticalAlignment="Center"/>
-            <TextBox x:Name="MaxEntriesTextBox" 
-                     Width="50" 
-                     Margin="5,0,0,0" 
-                     Text="15"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,5">
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Maximum number of key entries: " 
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="MaxEntriesTextBox" 
+                         Width="50" 
+                         Margin="5,0,0,0" 
+                         Text=""/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,5">
+                <TextBlock Text="Font size: " 
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="FontSizeTextBox" 
+                         Width="50" 
+                         Margin="5,0,0,0" 
+                         Text=""/>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="3" 

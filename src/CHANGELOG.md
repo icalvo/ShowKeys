@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - System tray icon menu item: "Quit" exits the applicatio
 - System tray icon menu item: "Settings" opens application settings
 - Settings: # of kb combinations is now configurable
+- Settings: Configurable font size
 
 ### Changed
 

@@ -8,16 +8,17 @@ namespace ShowKeys;
 
 public partial class MainWindow
 {
-    private readonly KeyHistory _keyHistory;
     private readonly NotifyIcon _trayIcon;
 
     public MainWindow()
     {
         InitializeComponent();
-        _keyHistory = new KeyHistory();
-        AppSettings.OnMaxKeyHistoryEntriesChanged = () => _keyHistory.MaxEntries = AppSettings.MaxKeyHistoryEntries;
+        var keyHistory = new KeyHistory();
+        AppSettings.OnMaxKeyHistoryEntriesChanged = 
+            () => keyHistory.MaxEntries = AppSettings.MaxKeyHistoryEntries;
+        AppSettings.OnFontSizeChanged = UpdateFontSize;
         AppSettings.Load();
-        KeyHistoryList.ItemsSource = _keyHistory.History;
+        KeyHistoryList.ItemsSource = keyHistory.History;
 
         // Prevent the window from getting focus when started
         ShowActivated = false;
@@ -26,7 +27,7 @@ public partial class MainWindow
         LowLevelKeyboardHooks.SetKeyboardHook(
             KeyComboBuilder.HandleKeyDown,
             KeyComboBuilder.HandleKeyUp,
-            keyCombo => Dispatcher.Invoke(() => _keyHistory.Add(keyCombo)));
+            keyCombo => Dispatcher.Invoke(() => keyHistory.Add(keyCombo)));
 
         _trayIcon = TrayIconBuilder.CreateTrayIcon();
     }
@@ -34,12 +35,27 @@ public partial class MainWindow
     private void PositionWindow()
     {
         var workingArea = SystemParameters.WorkArea;
-        var showKeysBarHeight = 80;
 
+        // Set width to screen width
         Left = workingArea.Left;
-        Top = workingArea.Bottom - showKeysBarHeight;
         Width = workingArea.Width;
-        Height = showKeysBarHeight;
+
+        Height = AppSettings.FontSize * 2;
+
+        // Update layout to ensure size calculations are accurate
+        UpdateLayout();
+        // Position at bottom of screen
+        Top = workingArea.Bottom - Height;
+    }
+    private void UpdateFontSize()
+    {
+        // This needs to be done in code since we're using a template selector
+        // and can't easily bind the font size in XAML
+
+        Resources["KeyTextFontSize"] = (double)AppSettings.FontSize;
+
+        // Update position since size has changed
+        PositionWindow();
     }
 
     protected override void OnClosed(EventArgs e)

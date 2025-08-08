@@ -34,9 +34,9 @@ public static class KeyComboBuilder
             case Keys.RWin:
                 _winPressed = true;
                 return null;
+            default:
+                return BuildKeyCombo(key);
         }
-
-        return BuildKeyCombo(key);
     }
 
     public static void HandleKeyUp(Keys key)
@@ -88,7 +88,7 @@ public static class KeyComboBuilder
         {
             Keys.Enter => "Enter",
             Keys.Tab => "Tab",
-            Keys.Back => "Backspace",
+            Keys.Back => "BS",
             Keys.Delete => "Delete",
             Keys.Escape => "Esc",
             Keys.Space => "Space",

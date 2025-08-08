@@ -14,8 +14,10 @@ public static class AppSettings
 
     private static readonly JsonSerializerOptions JsonSerializerOptions = new() { WriteIndented = true };
     private static int _maxKeyHistoryEntries = KeyHistory.DefaultMaxEntries;
+    private static int _fontSize;
 
     public static Action? OnMaxKeyHistoryEntriesChanged { get; set; }
+    public static Action? OnFontSizeChanged { get; set; }
 
     public static int MaxKeyHistoryEntries
     {
@@ -25,6 +27,17 @@ public static class AppSettings
             if (_maxKeyHistoryEntries == value) return;
             _maxKeyHistoryEntries = value;
             OnMaxKeyHistoryEntriesChanged?.Invoke();
+        }
+    }
+
+    public static int FontSize
+    {
+        get => _fontSize;
+        set
+        {
+            if (_fontSize == value) return;
+            _fontSize = value;
+            OnFontSizeChanged?.Invoke();
         }
     }
 
@@ -38,6 +51,12 @@ public static class AppSettings
             if (settings != null)
             {
                 MaxKeyHistoryEntries = settings.MaxKeyHistoryEntries;
+
+                // Only set FontSize if it exists in the settings file
+                if (settings.FontSize > 0)
+                {
+                    FontSize = settings.FontSize;
+                }
             }
         }
         catch (Exception ex)
@@ -55,6 +74,7 @@ public static class AppSettings
             var settings = new AppSettingsData
             {
                 MaxKeyHistoryEntries = MaxKeyHistoryEntries,
+                FontSize = FontSize
             };
             var json = JsonSerializer.Serialize(settings, JsonSerializerOptions);
             File.WriteAllText(SettingsFilePath, json);
@@ -68,5 +88,6 @@ public static class AppSettings
     private class AppSettingsData
     {
         public int MaxKeyHistoryEntries { get; init; }
+        public int FontSize { get; init; }
     }
 }
