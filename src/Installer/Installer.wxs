@@ -1,0 +1,10 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+    <Package 
+        Id="ShowKeys" 
+        Name="ShowKeys" 
+        Version="1.0.0" 
+        Manufacturer="Icm">
+
+        <Files Include="*" />
+    </Package>
+</Wix>
