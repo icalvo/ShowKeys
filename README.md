@@ -7,11 +7,13 @@ A transparent overlay application that displays the last 15 keyboard combination
 ## Features
 
 - Displays a transparent overlay bar above the taskbar
-- Shows the last 15 keyboard combinations pressed
+- Shows the last N (configurable) keyboard combinations pressed
 - Modifier keys (Ctrl, Alt, Shift, Win) are only shown when combined with other keys
 - Shift+letter combinations show the letter in uppercase, single letters in lowercase
 - Special keys (Enter, Tab, Backspace, etc.) are displayed by their name
 - Some padding is added after 1.5 seconds to separate fast key sequences
+- Configurable font size
+- Tray icon to quit the app and access settings
 
 ## Requirements
 
