@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ShowKeys;
 
-public static class KeysLogic
+public static class KeyComboBuilder
 {
     private static bool _ctrlPressed;
     private static bool _altPressed;

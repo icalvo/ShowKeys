@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using ShowKeys.History;
 
 namespace ShowKeys;
 
@@ -12,8 +13,20 @@ public static class AppSettings
         "settings.json");
 
     private static readonly JsonSerializerOptions JsonSerializerOptions = new() { WriteIndented = true };
+    private static int _maxKeyHistoryEntries = KeyHistory.DefaultMaxEntries;
 
-    public static int MaxKeyHistoryEntries { get; set; } = 15;
+    public static Action? OnMaxKeyHistoryEntriesChanged { get; set; }
+
+    public static int MaxKeyHistoryEntries
+    {
+        get => _maxKeyHistoryEntries;
+        set
+        {
+            if (_maxKeyHistoryEntries == value) return;
+            _maxKeyHistoryEntries = value;
+            OnMaxKeyHistoryEntriesChanged?.Invoke();
+        }
+    }
 
     public static void Load()
     {

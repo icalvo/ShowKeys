@@ -9,7 +9,7 @@ namespace ShowKeys;
 /// </summary>
 public partial class App
 {
-    private static readonly Mutex Mutex = new Mutex(false, "ShowKeysInstance");
+    private static readonly Mutex Mutex = new(false, "ShowKeysInstance");
     private bool _mutexAcquired;
 
     protected override void OnStartup(StartupEventArgs e)

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ShowKeys;
 
-public static partial class LowLevelHooks
+public static partial class LowLevelKeyboardHooks
 {
     private static IntPtr _hookId = IntPtr.Zero;
 
