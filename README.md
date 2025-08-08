@@ -1,6 +1,6 @@
 ﻿# ShowKeys
 
-A transparent overlay application that displays the last 15 keyboard combinations pressed.
+A transparent overlay application that displays the last keyboard combinations pressed.
 
 <img width="692" height="227" alt="image" src="https://github.com/user-attachments/assets/e09d5a5d-b3ba-488c-92b7-1b90f8803673" />
 
