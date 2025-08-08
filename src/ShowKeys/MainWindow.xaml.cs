@@ -16,6 +16,7 @@ public partial class MainWindow
     public MainWindow()
     {
         InitializeComponent();
+        AppSettings.Load();
         _keyHistory = new ObservableCollection<KeyEntryItem>();
         KeyHistoryList.ItemsSource = _keyHistory;
 
@@ -80,6 +81,7 @@ public partial class MainWindow
         _trayIcon.Dispose();
 
         LowLevelHooks.UnhookWindowsHook();
+        AppSettings.Save();
         base.OnClosed(e);
     }
 
@@ -89,6 +91,7 @@ public partial class MainWindow
         if (settingsWindow.ShowDialog() == true)
         {
             AppSettings.MaxKeyHistoryEntries = settingsWindow.MaxEntries;
+            AppSettings.Save();
 
             // Trim existing entries if needed
             while (_keyHistory.Count > AppSettings.MaxKeyHistoryEntries)
